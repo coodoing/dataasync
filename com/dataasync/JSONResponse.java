@@ -3,12 +3,12 @@ package com.dataasync;
 import org.json.JSONObject;
 
 public class JSONResponse {
-    public static final JSONResponse RESPONSE_STATUS_FAIL = new JSONResponse(false, "","");
-
+	private String data;
     private boolean isSucceed;
     private String message;
-    private String data;
 
+    public static final JSONResponse NIL_RESPONSE = new JSONResponse(false, "","");
+    
     public JSONResponse(boolean isSucceed, String message,String data) {
         this.isSucceed = isSucceed;
         this.message = message;
@@ -37,7 +37,7 @@ public class JSONResponse {
 	
 	public static JSONResponse getJSONResponse(String json) {
 		if (json.equals("") || json == null) {
-			return JSONResponse.RESPONSE_STATUS_FAIL;
+			return JSONResponse.NIL_RESPONSE;
 		}
 		try {
 			JSONObject object = new JSONObject(json);
@@ -47,8 +47,7 @@ public class JSONResponse {
 			boolean isSucceed = status.equals(Constants.KEY_SUCCEED);
 			return new JSONResponse(isSucceed, message, data);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
-		return JSONResponse.RESPONSE_STATUS_FAIL;
+		return JSONResponse.NIL_RESPONSE;
 	}
 }
