@@ -1,10 +1,18 @@
-package com.dataasync;
+package com.test;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.dataasync.CommonTask;
+import com.dataasync.Constants;
+import com.dataasync.DataAsyncTask;
+import com.dataasync.JSONResponse;
+import com.dataasync.DataAsyncTask.TaskCallBack;
+
 import android.os.AsyncTask;
 
-public class TestApp {
+@SuppressWarnings("unused")
+public class DataAsyncTaskTest {
 
 	private AsyncTask<Void, Void, JSONResponse> testTask;
 	private DataAsyncTask.TaskCallBack<JSONResponse> testTaskCallback = new DataAsyncTask.TaskCallBack<JSONResponse>() {
